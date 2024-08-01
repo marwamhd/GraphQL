@@ -71,7 +71,7 @@ form {
     box-sizing: border-box;
   }
   
-  button {
+  #button1 {
     font-weight: bold;
     font-family: Skia;
     background-color: #d94579;
@@ -84,10 +84,55 @@ form {
     width: 100%;
   }
   
-  button:hover {
+  #button1:hover {
     opacity: 0.8;
   }
   
   .container {
     padding: 16px;
   }
+
+#button2 {
+  font-weight: bold;
+  font-family: Skia;
+  background-color: #d94579;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 8px 0px 0px;
+  border: 1px solid #1F1435;
+  border-radius: 7px;
+  cursor: pointer;
+  width: 150px;
+}
+#logout-button{
+  font-weight: bold;
+  font-family: Skia;
+  background-color: #d94579;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 8px 0px 0px;
+  border: 1px solid #1F1435;
+  border-radius: 7px;
+  cursor: pointer;
+  width: 150px;
+}
+
+#button2:hover {
+  opacity: 0.8;
+}
+
+.btns {
+  display: inline;
+  margin-right: 8px;
+  position: absolute; 
+  top: 0;
+  right: 0;
+  width: 150px;
+}
+
+#error-message {
+  color: white;
+  font-weight: bold;
+  font-family: Skia;
+  font-size: 30px;
+}

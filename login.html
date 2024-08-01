@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="graph.css">
-    <script src="graph.js"></script>
+    <script src="login.js"></script>
     <title>GraphQL By Marwa</title>
     
 </head>
@@ -16,19 +16,19 @@
         <label for="logo" id="logotext2">By Marwa</label>
     </div>
    
-    <form action="action_page.php" method="post">
+    <form onsubmit="login(event)" id="login-form" method="post">
 
         <label for="login" id="logintext">Login</label>
         
         <div class="container">
           
-
-          <input type="text" placeholder="Enter Username / Email" name="uname" required>
+          <input type="text" placeholder="Enter Username / Email" id="username-or-email" required>
       
-          <input type="password" placeholder="Enter Password" name="psw" required>
+          <input type="password" placeholder="Enter Password" id="password" required>
       
-          <button type="submit">Login</button>
+          <button id="button1" type="submit">Login</button>
         </div>
       </form>
+      <div id="error-message"></div>
 </body>
 </html>
