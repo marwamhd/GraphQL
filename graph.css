@@ -92,18 +92,6 @@ form {
     padding: 16px;
   }
 
-#button2 {
-  font-weight: bold;
-  font-family: Skia;
-  background-color: #d94579;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 8px 0px 0px;
-  border: 1px solid #1F1435;
-  border-radius: 7px;
-  cursor: pointer;
-  width: 150px;
-}
 #logout-button{
   font-weight: bold;
   font-family: Skia;
@@ -135,4 +123,16 @@ form {
   font-weight: bold;
   font-family: Skia;
   font-size: 30px;
+}
+
+#user-info {
+  color: white;
+  font-family: Skia;
+}
+
+#name {
+  font-size: 30px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
 }

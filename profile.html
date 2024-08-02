@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile GraphQL By Marwa</title>
     <link rel="stylesheet" href="graph.css">
-    <script src="profile.js"></script>
+    <script src="ProfileUser.js"></script>
+    <script src="LoginUser.js"></script>
+    <script src="UserInfo.js"></script>
 </head>
 <body>
     <div id="logo-container">
@@ -15,9 +17,16 @@
     </div>
 
     <div class="btns">
-        <button id="button2" type="submit">Profile</button>
         <button id="logout-button" onclick="logout()">LogOut</button>
     </div>
+
+    <div id="user-info">
+        <p id="name">Name: Loading...</p>
+        <p id="username">Username: Loading...</p>
+        <p id="userid">ID: Loading...</p>
+        <p id="email">Email: Loading...</p>
+      </div>
+      <div id="error-message"></div>
 
 </body>
 </html>
