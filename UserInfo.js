@@ -25,6 +25,7 @@ async function fetchUserInfo() {
                               id
                               login
                               email
+                              campus
                           }
                       }
                   `,
@@ -51,9 +52,10 @@ async function fetchUserInfo() {
       if (Array.isArray(userInfoArr) && userInfoArr.length > 0) {
           const userData = userInfoArr[0]; 
           document.getElementById("name").textContent = `Welcome, ${userData.firstName || 'N/A'} ${userData.lastName || 'N/A'}!`;
-          document.getElementById("username").textContent = `Username: ${userData.login || 'N/A'}`;
-          document.getElementById("userid").textContent = `ID: ${userData.id || 'N/A'}`;
-          document.getElementById("email").textContent = `Email: ${userData.email || 'N/A'}`;
+          document.getElementById("username").textContent = `👤 ${userData.login || 'N/A'}`;
+          document.getElementById("userid").textContent = `🆔 ${userData.id || 'N/A'}`;
+          document.getElementById("email").textContent = `📩 ${userData.email || 'N/A'}`;
+          document.getElementById("campus").textContent = `🌐 ${userData.campus || 'N/A'}`;
       } else {
           document.getElementById("error-message").textContent = "No user info";
       }
@@ -63,4 +65,3 @@ async function fetchUserInfo() {
   }
 }
 
-window.onload = fetchUserInfo;
