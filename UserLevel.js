@@ -1,6 +1,5 @@
 async function fetchUserLevel() {
     const jwt = localStorage.getItem("jwt");
-    console.log("Retrieved Token:", jwt);
 
     if (!jwt || jwt.split(".").length !== 3) {
         console.error("Invalid Token");
@@ -37,7 +36,7 @@ async function fetchUserLevel() {
         );
 
         if (!response.ok) {
-            document.getElementById("level").textContent = "Failed to fetch level data.";
+            document.getElementById("level").textContent = "Failed to fetch level info";
             return;
         }
 
@@ -55,11 +54,11 @@ async function fetchUserLevel() {
         if (levelData) {
             document.getElementById("level").textContent = `${levelData.amount || 'N/A'}`;
         } else {
-            document.getElementById("level").textContent = "No level info available";
+            document.getElementById("level").textContent = "No level info";
         }
 
     } catch (error) {
-        document.getElementById("level").textContent = "Error fetching level info";
+        document.getElementById("level").textContent = "Error fetching level";
         console.error("Fetch error:", error);
     }
 }

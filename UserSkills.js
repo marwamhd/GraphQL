@@ -49,11 +49,14 @@ async function fetchSkills() {
         }
 
         const skillsData = result.data?.transaction || [];
+        const amountElement = document.getElementById("amount");
 
-        if (skillsData.length > 0) {
-            createSpiderwebChart(skillsData);
+        if (Array.isArray(skillsData) && skillsData.length > 0) {
+            const amounts = skillsData.map(skill => `${skill.type}: ${skill.amount}`).join("<br>");
+            amountElement.innerHTML = amounts; 
+            drawSkillsChart(skillsData); // the chart
         } else {
-            console.log("No skills data available");
+            amountElement.textContent = "No skills data available";
         }
 
     } catch (error) {
@@ -61,20 +64,24 @@ async function fetchSkills() {
     }
 }
 
-function createSpiderwebChart(data) {
+
+
+
+function drawSkillsChart(data) {
     const svg = document.getElementById('chart');
     const width = svg.clientWidth;
     const height = svg.clientHeight;
     const centerX = width / 2;
     const centerY = height / 2;
-    const levels = 5; // concentric circles
+    const levels = 4; // circles
     const maxValue = Math.max(...data.map(d => d.amount));
-    const radius = Math.min(width, height) / 3; // spiderweb size
+    const radius = Math.min(width, height) / 3.5; 
     const angleSlice = (Math.PI * 2) / data.length;
+    const scale = 0.7;
 
     svg.innerHTML = '';
 
-    // draw concentric circles
+    // draw circles
     for (let i = 1; i <= levels; i++) {
         const levelRadius = (i / levels) * radius;
         const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -86,7 +93,7 @@ function createSpiderwebChart(data) {
         svg.appendChild(circle);
     }
 
-    // draw skill axes and labels
+    // draw skill axes & labels
     data.forEach((d, i) => {
         const angle = angleSlice * i - Math.PI / 2;
         const x = centerX + Math.cos(angle) * radius;
@@ -101,36 +108,26 @@ function createSpiderwebChart(data) {
         line.setAttribute('stroke', '#bbb');
         svg.appendChild(line);
 
-        // draw skill labels outside the chart
-        const labelX = centerX + Math.cos(angle) * (radius + 20); // Position labels outside the chart
-        const labelY = centerY + Math.sin(angle) * (radius + 20);
+        const labelX = centerX + Math.cos(angle) * (radius + 15);
+        const labelY = centerY + Math.sin(angle) * (radius + 15);
         const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
         label.setAttribute('x', labelX);
         label.setAttribute('y', labelY);
         label.setAttribute('dy', y > centerY ? "1em" : "-0.5em");
         label.setAttribute('text-anchor', x > centerX ? "start" : "end");
+        label.setAttribute('fill', '#ffffff');
+        label.setAttribute('font-family', '"IBM Plex Mono", monospace');
+        label.setAttribute('font-weight', '300');
+        label.setAttribute('font-size', '10px');
         label.textContent = d.type.replace("skill_", "").replace("-", " ");
         svg.appendChild(label);
-
-        // draw skill amounts inside the chart
-        const valueRadius = (d.amount / maxValue) * radius;
-        const valueX = centerX + Math.cos(angle) * valueRadius;
-        const valueY = centerY + Math.sin(angle) * valueRadius;
-        const valueLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        valueLabel.setAttribute('x', valueX);
-        valueLabel.setAttribute('y', valueY);
-        valueLabel.setAttribute('dy', "0.3em"); // Adjust the position slightly
-        valueLabel.setAttribute('text-anchor', "middle");
-        valueLabel.setAttribute('fill', '#333');
-        valueLabel.textContent = d.amount;
-        svg.appendChild(valueLabel);
     });
 
     // draw spiderweb path
     let points = '';
     data.forEach((d, i) => {
         const angle = angleSlice * i - Math.PI / 2;
-        const valueRadius = (d.amount / maxValue) * radius;
+        const valueRadius = (d.amount / maxValue) * radius * scale;
         const x = centerX + Math.cos(angle) * valueRadius;
         const y = centerY + Math.sin(angle) * valueRadius;
         points += `${x},${y} `;

@@ -135,8 +135,8 @@ form {
   color: rgb(0, 0, 0);
   display: inline-block;
   position: absolute; 
-    top: 28.5%;       
-    right: 83%; 
+  top: 25.5%;       
+  right: 83%; 
 }
 
 #username {
@@ -146,14 +146,14 @@ form {
   padding: 10px 20px;
   margin: 8px 8px 0px 0px;
   background-color: #333;
-  color: white;
+  color: rgb(255, 255, 255);
   border: none;
   cursor: pointer;
   border-radius: 5px;
 }
 
 #user-details {
-  font-size: 15px;
+  font-size: 13px;
   font-family: "IBM Plex Mono", monospace;
   font-weight: 300;
   display: none;
@@ -167,7 +167,7 @@ form {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
-  min-width: 300px;
+  min-width: 250px;
 }
 
 #user-details div {
@@ -199,8 +199,8 @@ form {
   color: white;
   font-size: 30px;
   position: absolute;
-  top: 100px;
-  left: 100px;
+  top: 13%;
+  right: 61%;
 }
 
 #level-container {
@@ -235,28 +235,80 @@ form {
   margin: 0; 
 }
 
-#skills {
-  color: white;
-  font-size: 20px;
-}
-
 #spiderweb-chart {
-  width: 500px; /* Adjust the width as needed */
-  max-width: 600px; /* Set a max-width if needed */
-  height: 420px; /* Adjust the height as needed */
-  margin: auto; /* Center the container horizontally */
-  display: flex; /* Use flexbox to center content */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  background-color: #272529;
+  width: 350px; 
+  height: 300px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 53%;
+  right: 69.2%;
 }
 
 #spiderweb-chart svg {
-  width: 100%; /* Make SVG fill the container width */
-  height: 100%; /* Make SVG fill the container height */
-  background-color: #f9f9f9; /* Background color of the SVG */
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Shadow behind the SVG */
-  border-radius: 10px; /* Rounded corners */
-  padding: 10px; /* Padding inside the SVG container */
-  display: block; /* Ensure SVG is a block element */
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  display: block;
 }
 
+#skillstxt {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 300;
+  color: white;
+  position: absolute;
+  right: 88.7%;
+  top: 54%;
+  z-index: 10;
+  font-size: 12.5px;
+}
+
+#seemore {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 300;
+  color: white;
+  position: absolute;
+  right: 71%;
+  top: 54%;
+  z-index: 10;
+  font-size: 12.5px;
+  text-decoration: underline;
+}
+
+#amounttxt {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+#skill-amount {
+  display: none; 
+  position: absolute;
+  top: 53%;
+  right: 58.5%;
+  font-size: 11.5px;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 300;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  min-width: 130px;
+}
+
+#seemore {
+  cursor: pointer; 
+}
+
+#seemore:hover + #skill-amount {
+  opacity: 0.8;
+  display: block; 
+}
+
+#seemore:hover {
+  opacity: 0.5;
+}

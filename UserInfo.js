@@ -1,6 +1,5 @@
 async function fetchUserInfo() {
   const jwt = localStorage.getItem("jwt");
-  console.log("Retrieved Token:", jwt);
 
   if (!jwt || jwt.split(".").length !== 3) {
     console.error("Invalid Token");
