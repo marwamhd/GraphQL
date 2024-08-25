@@ -17,13 +17,13 @@ async function login(event) {
 
     if (response.ok) {
       const token = await response.text(); // token is a plain string
-      console.log('Token:', token);
-    
+      console.log("Token:", token);
+
       if (token) {
         // remove extra quotes around the token
-        const cleanToken = token.replace(/^"(.*)"$/, '$1');
-        localStorage.setItem('jwt', cleanToken);
-        window.location.href = "profile.html";
+        const cleanToken = token.replace(/^"(.*)"$/, "$1");
+        localStorage.setItem("jwt", cleanToken);
+        window.location.href = "index.html";
       } else {
         console.error("JWT token is undefined in the response");
         document.getElementById("error-message").innerText =
@@ -33,7 +33,6 @@ async function login(event) {
       const errorMessage = await response.text();
       alert(errorMessage);
     }
-    
   } catch (error) {
     console.error("Error during login:", error);
     document.getElementById("error-message").innerText =

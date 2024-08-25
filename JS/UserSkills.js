@@ -49,10 +49,10 @@ async function fetchSkills() {
         }
 
         const skillsData = result.data?.transaction || [];
-        const amountElement = document.getElementById("amount");
+        const amountElement = document.getElementById("skills-amount");
 
         if (Array.isArray(skillsData) && skillsData.length > 0) {
-            const amounts = skillsData.map(skill => `${skill.type}: ${skill.amount}`).join("<br>");
+            const amounts = skillsData.map(skill => `${skill.type}: ${skill.amount}%`).join("<br>");
             amountElement.innerHTML = amounts; 
             drawSkillsChart(skillsData); // the chart
         } else {
@@ -68,20 +68,22 @@ async function fetchSkills() {
 
 
 function drawSkillsChart(data) {
-    const svg = document.getElementById('chart');
+    const svg = document.getElementById('skills-chart');
     const width = svg.clientWidth;
     const height = svg.clientHeight;
     const centerX = width / 2;
     const centerY = height / 2;
-    const levels = 4; // circles
+    const levels = 4; // Number of concentric circles
     const maxValue = Math.max(...data.map(d => d.amount));
-    const radius = Math.min(width, height) / 3.5; 
+
+    // Adjust radius for a slightly smaller chart width
+    const radius = (Math.min(width, height) / 3.5) - 10; // Subtract 10px for left and right margin
     const angleSlice = (Math.PI * 2) / data.length;
-    const scale = 0.7;
+    const scale = 0.75; // Adjusted scale for better fit
 
     svg.innerHTML = '';
 
-    // draw circles
+    // Draw circles
     for (let i = 1; i <= levels; i++) {
         const levelRadius = (i / levels) * radius;
         const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -93,13 +95,13 @@ function drawSkillsChart(data) {
         svg.appendChild(circle);
     }
 
-    // draw skill axes & labels
+    // Draw skill axes & labels
     data.forEach((d, i) => {
         const angle = angleSlice * i - Math.PI / 2;
         const x = centerX + Math.cos(angle) * radius;
         const y = centerY + Math.sin(angle) * radius;
 
-        // draw axis lines
+        // Draw axis lines
         const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
         line.setAttribute('x1', centerX);
         line.setAttribute('y1', centerY);
@@ -108,6 +110,7 @@ function drawSkillsChart(data) {
         line.setAttribute('stroke', '#bbb');
         svg.appendChild(line);
 
+        // Adjust label position and alignment
         const labelX = centerX + Math.cos(angle) * (radius + 15);
         const labelY = centerY + Math.sin(angle) * (radius + 15);
         const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -123,7 +126,7 @@ function drawSkillsChart(data) {
         svg.appendChild(label);
     });
 
-    // draw spiderweb path
+    // Draw spiderweb path
     let points = '';
     data.forEach((d, i) => {
         const angle = angleSlice * i - Math.PI / 2;
@@ -140,4 +143,3 @@ function drawSkillsChart(data) {
     path.setAttribute('stroke-width', 2);
     svg.appendChild(path);
 }
-
