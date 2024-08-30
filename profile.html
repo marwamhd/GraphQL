@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GraphQL By Marwa</title>
+    <link rel="stylesheet" href="CSS/profile.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="JS/ProfileUser.js"></script>
+    <script src="JS/LoginUser.js"></script>
+    <script src="JS/UserInfo.js"></script>
+    <script src="JS/UserLevel.js"></script>
+    <script src="JS/UserSkills.js"></script>
+    <script src="JS/UserAudits.js"></script>
+    <script src="JS/UserAuditRatio.js"></script>
+    <script src="JS/UserXp.js"></script>
+    <script src="JS/UserLastProject.js"></script>
+    <script src="JS/userxps.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">
+        <img src="images/rebootlogo.png" class="logo-img" />
+        <label class="GraphQL">GraphQL</label>
+        <label class="ByMarwa">By Marwa</label>
+      </div>
+      <div class="logout">
+        <button class="logout-button" onclick="logout()">
+          <img src="images/logout (1).png" class="logout-img" />
+        </button>
+      </div>
+    </div>
+    <div class="welcome">
+      <div id="name"></div>
+    </div>
+    <div class="info-container">
+      <div class="first">
+        <div id="username"></div>
+        <div class="userinfo">
+          <div class="userinfo-content">
+            <div id="userid"></div>
+            <div id="email"></div>
+            <div id="campus"></div>
+          </div>
+        </div>
+        <div class="audit-ratio">
+          <div class="ratio-title">AUDITS RATIO</div>
+          <div class="done">
+            <svg id="done-chart" width="180" height="20"></svg>
+            <div class="done-value">↑ <span id="done-value"></span> KB</div>
+          </div>
+          <div class="received">
+            <svg id="received-chart" width="180" height="20"></svg>
+            <div class="received-value">
+              ↓ <span id="received-value"></span> KB
+            </div>
+          </div>
+          <div id="auditratio"></div>
+        </div>
+      </div>
+
+      <div class="second">
+        <table class="audits-table">
+          <thead>
+            <tr>
+              <th class="all-audits" colspan="2">AUDITS</th>
+              <th class="status">STATUS</th>
+            </tr>
+          </thead>
+          <tbody id="auditsTableBody"></tbody>
+        </table>
+      </div>
+      <div class="third">
+        <div class="skills">
+          <svg id="skills-chart"></svg>
+          <div class="skills-title">SKILLS</div>
+          <div class="see-more">↑ SEE MORE</div>
+          <div id="skills-amount" class="tooltip"></div>
+        </div>
+        <div class="project">
+          <img src="images/submit2.png" class="submit-img" />
+          <div>
+            <div class="project-title">You Just Submitted</div>
+            <div id="project-name"></div>
+            <div id="submission-date-time"></div>
+          </div>
+        </div>
+      </div>
+      <div class="forth">
+        <div class="total-xp">
+          <div class="total-xp-title">TOTAL <br /> XP</div>
+          <svg id="xp-pie-chart" width="150" height="150" viewBox="0 0 200 200">
+            <circle id="pie-background" cx="100" cy="100" r="80" />
+            <circle id="pie-progress" cx="100" cy="100" r="80" />
+            <text id="xp-total-amount" x="50%" y="50%" fill="white"></text>
+          </svg>
+        </div>
+        <div class="xp-amount">
+          <div class="xp-amount-title">XP AMOUNT</div>
+          <div>
+            <button id="prev-xp-btn">←</button>
+            <button id="next-xp-btn">→</button>
+          </div>
+          <div>
+            <svg id="xp-bar-chart" width="100" height="140"></svg>
+          </div>
+          <div id="xp-project-name"></div>
+        </div>
+      </div>
+      <div class="level">
+        <div class="level-title">LEVEL</div>
+        <div id="level">level</div>
+      </div>
+      
+    </div>
+  </body>
+
+  <script>
+    window.onload = function () {
+      fetchUserInfo();
+      fetchUserLevel();
+      fetchSkills();
+      fetchUserAudits();
+      fetchAuditRatio();
+      fetchUserXp();
+      fetchLastProject();
+      fetchAllUserXps();
+    };
+  </script>
+</html>

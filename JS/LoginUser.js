@@ -23,7 +23,7 @@ async function login(event) {
         // remove extra quotes around the token
         const cleanToken = token.replace(/^"(.*)"$/, "$1");
         localStorage.setItem("jwt", cleanToken);
-        window.location.href = "index.html";
+        window.location.href = "profile.html";
       } else {
         console.error("JWT token is undefined in the response");
         document.getElementById("error-message").innerText =
