@@ -45,7 +45,7 @@ form {
   font-size: 18px;
   margin-bottom: 20px;
   text-align: center;
-  width: 100%; /* Ensure it's centered */
+  width: 100%; 
 }
 
 .container {
@@ -58,7 +58,7 @@ form {
 input[type="text"],
 input[type="password"] {
   font-family: Skia;
-  width: 50%; /* Adjust this value as needed */
+  width: 50%; 
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -77,7 +77,7 @@ input[type="password"] {
   border: 0px solid #1f1435;
   border-radius: 5px;
   cursor: pointer;
-  width: 20%; /* Adjust this value as needed */
+  width: 20%;
 }
 
 #login-button:hover {
