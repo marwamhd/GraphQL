@@ -1,7 +1,7 @@
 function logout() {
   localStorage.removeItem("jwt");
 
-  fetch('https://learn.reboot01.com/api/auth/logout', {
+  fetch('https://learn.reboot01.com/api/auth/signout', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${localStorage.getItem("jwt")}` 
