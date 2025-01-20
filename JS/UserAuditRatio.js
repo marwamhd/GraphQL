@@ -93,28 +93,25 @@ function updateSVG(svgId, value, maxValue) {
 
     svg.innerHTML = '';
 
-    // Determine the color based on the svgId
     let color;
     if (svgId === "done-chart") {
-        color = "#92a4d8"; // Green for DONE
+        color = "#92a4d8"; 
     } else if (svgId === "received-chart") {
-        color = "#4169E1"; // Yellow for RECEIVED
+        color = "#4169E1"; 
     } else {
-        color = "#FFFFFF"; // Default color (white) for any other chart
+        color = "#FFFFFF"; 
     }
 
-    // Calculate the width of the bar based on the value
     const barWidth = (value / maxValue) * width;
 
-    // Create a thin, rounded rectangle for the bar
     const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     rect.setAttribute("x", 0);
-    rect.setAttribute("y", height / 3); // Center the bar vertically
+    rect.setAttribute("y", height / 3); 
     rect.setAttribute("width", barWidth);
-    rect.setAttribute("height", height / 3); // Make the bar even thinner
-    rect.setAttribute("rx", height / 6); // Round the corners
-    rect.setAttribute("ry", height / 6); // Round the corners
-    rect.setAttribute("fill", color);  // Set the color of the bar based on the svgId
+    rect.setAttribute("height", height / 3); 
+    rect.setAttribute("rx", height / 6);
+    rect.setAttribute("ry", height / 6); 
+    rect.setAttribute("fill", color);
     svg.appendChild(rect);
 }
 

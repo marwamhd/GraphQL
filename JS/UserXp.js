@@ -48,11 +48,10 @@ async function fetchUserXp() {
     const xpAmountElement = document.getElementById("xp-total-amount");
     const pieProgress = document.getElementById("pie-progress");
 
-    // Update the SVG text with line breaks using <tspan>
     xpAmountElement.innerHTML = `<tspan x="50%" dy="-0.3em" text-anchor="middle">${totalXp}</tspan><tspan x="50%" dy="1.2em" text-anchor="middle">KB</tspan>`;
 
-    const maxXp = 10000; // Set a max value for scaling
-    const progress = (totalXp / maxXp) * 500; // 2 * π * r (where r = 80)
+    const maxXp = 10000; 
+    const progress = (totalXp / maxXp) * 500; 
     pieProgress.setAttribute(
       "stroke-dasharray",
       `${progress} ${500 - progress}`
