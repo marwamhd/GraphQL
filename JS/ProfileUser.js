@@ -1,5 +1,5 @@
 function logout() {
   localStorage.removeItem("jwt");
 
-  window.location.href = "index.html";
+  window.location.replace("index.html");
 }
